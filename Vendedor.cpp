@@ -1,14 +1,26 @@
-#include <string>
-#include "Empregado.hpp"
+#include "Vendedor.hpp"
 
-class Vendedor : public Empregado {
+// Construtor para a classe Vendedor
+Vendedor::Vendedor(std::string nome, double salarioHora, double quotaMensalVendas) : Empregado(nome, salarioHora){
+	this->quotaMensalVendas = quotaMensalVendas;
+}
 
-  public:
-    std::string nome;  	  
-	
-	double quotaTotalAnual() {
-	  return quotaMensalVendas * 12;
-	}
-	
-};
+double Vendedor::quotaTotalAnual() const {
+	return this->quotaMensalVendas * 12;
+}
 
+// Atribui um valor ao atributo quotaMensalVendas
+void Vendedor::setQuotaMensalVendas(double quotaMensalVendas) {
+    this->quotaMensalVendas = quotaMensalVendas;
+}
+
+// Obtem o atributo quotaMensalVendas
+double Vendedor::getQuotaMensalVendas() const {
+    return this->quotaMensalVendas;
+}
+
+void Vendedor::print() const {
+	std::cout << "Nome: " << this->nome << std::endl;
+	std::cout << "Salario Mes: " << this->pagamentoMes(6) << std::endl;  
+	std::cout << "Quota vendas: " << this->quotaTotalAnual() << std::endl;
+}
